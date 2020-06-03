@@ -1,0 +1,34 @@
+#include <iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+#define fo(i,n) for(i=0;i<n;i++)
+#define Fo(i,k,n) for(i=k;i<n;i++)
+#define vi vector<int>
+#define pb push_back
+const int N=1e5+4;
+int a[N],dp[N];
+vi g[N];
+void dfs(int u,int par)
+{
+	dp[u]=a[u];
+	int mx=0;
+    for(int childs : g[u])
+    {
+    	if(childs==par)
+    	 continue;
+        dfs(childs,u);
+        mx=max(mx,dp[childs]);
+    }
+    dp[u]+=mx;
+}
+int main()
+{
+	int i,j,k,n,u,v;
+	cin>>n;
+	Fo(i,1,n+1) cin>>a[i];
+	Fo(i,1,n+1)cin>>u>>v,g[u].pb(v),g[v].pb(u);
+	dfs(1,0);
+	cout<<dp[1]<<endl;
+
+}
