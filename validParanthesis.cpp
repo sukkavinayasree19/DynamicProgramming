@@ -18,7 +18,7 @@ int main() {
 		{
 			j=i-dp[i]-1;
 			if(s[j]=='(')
-			dp[i+1]=dp[i-1]+dp[j]+2;
+			dp[i+1]=dp[i-1]+dp[j]+2;//largest length of substring=>dp=dp[i-1]+2.
 			else
 			dp[i+1]=0;
 		}
